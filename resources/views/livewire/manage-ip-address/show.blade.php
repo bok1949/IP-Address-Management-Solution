@@ -2,13 +2,15 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title text-center">List of Ip Addresses</h3>
-            <div class="row my-2">
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createIpAddress">
-                        Add Ip Address
-                    </button>
+            @auth
+                <div class="row my-2">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createIpAddress">
+                            Add Ip Address
+                        </button>
+                    </div>
                 </div>
-            </div>
+            @endauth
     
             @if(session()->has('success'))
                 <div class="alert alert-success text-center" role="alert">
@@ -27,7 +29,9 @@
                         <tr>
                             <th scope="col">Ip Address</th>
                             <th scope="col">Label</th>
-                            <th scope="col">Action</th>
+                            @auth
+                                <th scope="col">Action</th>
+                            @endauth
                         </tr>
                     </thead>
                     <tbody>
@@ -36,13 +40,13 @@
                         <tr>
                             <td>{{ $ipAddress->ip_address }}</td>
                             <td>{{ $ipAddress->ip_label }}</td>
-                            
-                            <td>
-                                <a href="#" wire:click.stop="showUpdateModal({{$ipAddress->id}})" data-bs-toggle="modal"
-                                    data-bs-target="#updateIpAddress">Edit</a> |
-                                <a href="#">Show logs</a>
-                            </td>
-                            
+                            @auth
+                                <td>
+                                    <a href="#" wire:click.stop="showUpdateModal({{$ipAddress->id}})" data-bs-toggle="modal"
+                                        data-bs-target="#updateIpAddress">Edit</a> |
+                                    <a href="#">Show logs</a>
+                                </td>
+                            @endauth
                         </tr>
                         @endforeach
                         @else

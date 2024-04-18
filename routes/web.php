@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IpAddressController;
 
 /*
@@ -17,3 +18,6 @@ use App\Http\Controllers\IpAddressController;
 Route::get('/', [IpAddressController::class, 'index'])->name('index');
 Route::get('index', [IpAddressController::class, 'index'])->name('index');
 
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('post.login');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
