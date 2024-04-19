@@ -25,6 +25,7 @@ class AuthController extends Controller
             return redirect('index')->withSuccess('Successfully Loggedin!');
         }
         Session::flash('errorMessage', "Your login credentials are incorrect!");
+        
         return redirect('login');
     }
 

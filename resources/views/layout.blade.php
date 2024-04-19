@@ -19,6 +19,7 @@
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
                         </li>
                     @else
+                        @yield('user-authenticated-name')
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('logout')}}">Logout</a>
                         </li>

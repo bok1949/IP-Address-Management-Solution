@@ -2,20 +2,22 @@
 
 namespace App\Http\Livewire\ManageIpAddress;
 
+use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\IpAddress;
+use App\Models\IpAddressLog;
 
 class Update extends Component
 {
     protected $listeners = [
         'setIpAddressLabel',
     ];
-
     protected $rules = [
         'ip_label' => 'required',
     ];
+    protected $eventType = 'UPDATED';
 
-    public $ip_label, $ipAddressId;
+    public $ip_label, $ipAddressId, $userUuid, $oldLabelValue;
 
     public function render()
     {
@@ -26,6 +28,7 @@ class Update extends Component
     {
         $ipAddress = IpAddress::findOrFail($id);
         $this->ip_label = $ipAddress->ip_label;
+        $this->oldLabelValue = $ipAddress->ip_label;
         $this->ipAddressId = $ipAddress->id;
     }
 
@@ -49,6 +52,15 @@ class Update extends Component
                 'ip_label' => $this->ip_label
             ])->save();
 
+            IpAddressLog::create([
+                'event_type' => $this->eventType,
+                'user_uuid' => $this->userUuid,
+                'ip_address_id' => $this->ipAddressId,
+                'changes_made' => $this->changesMade(),
+                'created_at' => null,
+                'updated_at' => Carbon::now(),
+            ]);
+
             session()->flash('success', 'Ip address label is updated successfully!!');
 
             $this->cancel();
@@ -58,4 +70,13 @@ class Update extends Component
             $this->cancel();
         }
     }
+
+    public function changesMade()
+    {
+        return [
+            'old_value' => $this->oldLabelValue,
+            'new_value' => $this->ip_label,
+        ];
+    }
+
 }

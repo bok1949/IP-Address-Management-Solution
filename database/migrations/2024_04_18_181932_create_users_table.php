@@ -16,7 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->uuid('user_uuid')->default(DB::raw('(UUID())'));
+            $table->uuid('user_uuid')->default(DB::raw('(UUID())'))->unique();
+            
             $table->string('password');
             $table->timestamps();
         });

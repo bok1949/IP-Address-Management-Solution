@@ -74,8 +74,8 @@
             </div>
         </div>
     </div>
+    {{$userUuid}}
+    @livewire('manage-ip-address.create', ['userUuid' => $userUuid])
 
-    @livewire('manage-ip-address.create')
-
-    @livewire('manage-ip-address.update')
+    @livewire('manage-ip-address.update', ['userUuid' => $userUuid])
 </div>

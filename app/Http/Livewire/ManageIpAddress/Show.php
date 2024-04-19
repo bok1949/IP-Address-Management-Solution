@@ -11,7 +11,16 @@ class Show extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
+    public $user, $userUuid;
  
+    public function mount()
+    {
+        // dump($this->user);
+        if ($this->user) {
+            $this->userUuid = $this->user->user_uuid;
+        }
+    }
+
     public function render()
     {
         $ipAddresses = IpAddress::select('id', 'ip_address', 'ip_label')->paginate(20);
