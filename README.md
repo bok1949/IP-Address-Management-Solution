@@ -1,5 +1,5 @@
 # installing laravel framework v10
-composer create-project laravel/laravel:^10.0 <your working directory>
+composer create-project laravel/laravel:^10.0 [your working directory]
 
 # generate new application key
 - run the following command
@@ -20,7 +20,12 @@ DB_PASSWORD=
 
 # follow the steps below
 - run the "composer install"
-- run the migration files including seeding
+- run the migration files including seeding <br>
 php artisan migrate --seed
+
+# run the application
+- run the following comman <br>
+php artisan serve
+- then copy the link address of the server running on and paste it in the URL
 
 
