@@ -15,7 +15,6 @@ class Show extends Component
  
     public function mount()
     {
-        // dump($this->user);
         if ($this->user) {
             $this->userUuid = $this->user->user_uuid;
         }
@@ -33,5 +32,10 @@ class Show extends Component
     public function showUpdateModal($id)
     {
         $this->emit('setIpAddressLabel', $id);
+    }
+
+    public function showViewLogsModal($id)
+    {
+        $this->emit('setViewLogs', $id);
     }
 }

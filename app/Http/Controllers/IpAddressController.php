@@ -11,7 +11,6 @@ class IpAddressController extends Controller
         $user = [];
         if (Auth::check()) {
             $user = auth()->user();
-            // dump($user);
         }
         
         return view('manage-ip-address.index', compact('user'));

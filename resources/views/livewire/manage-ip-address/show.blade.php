@@ -42,9 +42,16 @@
                             <td>{{ $ipAddress->ip_label }}</td>
                             @auth
                                 <td>
-                                    <a href="#" wire:click.stop="showUpdateModal({{$ipAddress->id}})" data-bs-toggle="modal"
+                                    <a 
+                                        href="#" 
+                                        wire:click.stop="showUpdateModal({{$ipAddress->id}})" 
+                                        data-bs-toggle="modal"
                                         data-bs-target="#updateIpAddress">Edit</a> |
-                                    <a href="#">Show logs</a>
+                                    <a 
+                                        href="#" 
+                                        wire:click.stop="showViewLogsModal({{$ipAddress->id}})" 
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#viewLogs">View logs</a>
                                 </td>
                             @endauth
                         </tr>
@@ -74,8 +81,10 @@
             </div>
         </div>
     </div>
-    {{$userUuid}}
+
     @livewire('manage-ip-address.create', ['userUuid' => $userUuid])
 
     @livewire('manage-ip-address.update', ['userUuid' => $userUuid])
+
+    @livewire('manage-ip-address.view-logs', ['userUuid' => $userUuid])
 </div>

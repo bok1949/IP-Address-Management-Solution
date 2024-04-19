@@ -2,11 +2,11 @@
 composer create-project laravel/laravel:^10.0 [your working directory]
 
 # generate new application key
-- run the following command
+- run the following command <br>
 php artisan key:generate
 
 # install livewire
-- run the following command
+- run the following command <br>
 composer require livewire/livewire "^2.*"
 
 # setup your database 
@@ -28,4 +28,7 @@ php artisan migrate --seed
 php artisan serve
 - then copy the link address of the server running on and paste it in the URL
 
-
+# user after migrated the seed (pre created user)
+- to login <br>
+email address = john@gmail.com <br>
+password = john

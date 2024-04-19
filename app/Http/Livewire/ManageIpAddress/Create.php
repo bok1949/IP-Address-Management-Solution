@@ -7,8 +7,6 @@ use Livewire\Component;
 use App\Models\IpAddress;
 use App\Models\IpAddressLog;
 
-// use Illuminate\Support\Facades\Auth;
-
 class Create extends Component
 {
     protected $eventType = 'CREATED';
