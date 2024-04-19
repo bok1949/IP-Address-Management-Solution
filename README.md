@@ -1,5 +1,5 @@
 # installing laravel framework v10
-composer create-project laravel/laravel:^10.0 <working-directory>
+composer create-project laravel/laravel:^10.0 <your working directory>
 
 # generate new application key
 - run the following command
